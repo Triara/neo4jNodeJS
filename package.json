@@ -4,8 +4,15 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "node_modules/.bin/mocha --harmony integrationTest"
   },
   "author": "Triara",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "neo4j": "2.0.0-RC2"
+  },
+  "devDependencies": {
+    "chai": "^3.2.0",
+    "mocha": "^2.2.5"
+  }
 }
