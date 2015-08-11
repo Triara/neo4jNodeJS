@@ -2,11 +2,17 @@
 
 const db = require('./dbConnection.js');
 
-module.exports = dataToSave => {
+const queryForDeleteAllNodes = [
+    'MATCH (n)',
+    'OPTIONAL MATCH (n)-[r]-()',
+    'DELETE n,r'
+].join('\n');
+
+
+module.exports = () => {
     return new Promise((resolve, reject) => {
         db.cypher({
-            query: 'CREATE (person:Person {data})',
-            params: {data: dataToSave}
+            query: queryForDeleteAllNodes
         }, (err, results) => {
             if (err) {
                 reject(err);
