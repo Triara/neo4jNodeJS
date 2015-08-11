@@ -1,6 +1,6 @@
 'use strict';
 
-const performQuery = require('./performQuery.js');
+const performQuery = require('./storage/performQuery.js');
 
 module.exports = dataToSave => {
     const query = 'CREATE (person:Person {data})',

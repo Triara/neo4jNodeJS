@@ -1,6 +1,6 @@
 'use strict';
 
-const performQuery = require('./performQuery.js');
+const performQuery = require('./storage/performQuery.js');
 
 module.exports = personsName => {
     const query = [
