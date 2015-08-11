@@ -1,4 +1,6 @@
 const neo4j = require('neo4j');
-const db = new neo4j.GraphDatabase('http://neo4j:pass@localhost:7474');
+
+const uri = process.env['NEO4J_AUTH'] ? 'http://' + process.env['NEO4J_AUTH'] + '@localhost:7474' : 'http://localhost:7474';
+const db = new neo4j.GraphDatabase(uri);
 
 module.exports = db;
