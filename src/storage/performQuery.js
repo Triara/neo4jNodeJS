@@ -8,11 +8,6 @@ module.exports = (query, params) => {
             query: query,
             params: params
         }, (err, results) => {
-
-            console.log('======================')
-            console.log(err)
-            console.log(results)
-
             if (err) {
                 reject(err);
             } else {
