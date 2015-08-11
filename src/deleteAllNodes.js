@@ -1,6 +1,6 @@
 'use strict';
 
-const db = require('./dbConnection.js');
+const performQuery = require('./performQuery.js');
 
 const queryForDeleteAllNodes = [
     'MATCH (n)',
@@ -10,15 +10,5 @@ const queryForDeleteAllNodes = [
 
 
 module.exports = () => {
-    return new Promise((resolve, reject) => {
-        db.cypher({
-            query: queryForDeleteAllNodes
-        }, (err, results) => {
-            if (err) {
-                reject(err);
-            } else {
-                resolve(results);
-            }
-        });
-    });
+    return performQuery(queryForDeleteAllNodes);
 };

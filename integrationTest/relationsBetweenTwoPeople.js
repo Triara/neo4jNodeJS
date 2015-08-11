@@ -24,7 +24,7 @@ describe('Relations between two persons', () => {
         });
     });
 
-    it.only('Should return all persons related to a given one with a limit of 25', done => {
+    it('Should return all persons related to a given one with a limit of 25', done => {
         const firstPerson = {name: 'Cortana'};
         const secondPerson = {name: 'John'};
 

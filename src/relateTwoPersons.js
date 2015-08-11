@@ -1,6 +1,6 @@
 'use strict';
 
-const db = require('./dbConnection.js');
+const performQuery = require('./performQuery.js');
 
 module.exports = (firstPersonName, secondPersonName) => {
     const query = [
@@ -10,15 +10,5 @@ module.exports = (firstPersonName, secondPersonName) => {
         'RETURN r'
     ].join('\n');
 
-    return new Promise((resolve, reject) => {
-        db.cypher({
-            query: query
-        }, (err, results) => {
-            if (err) {
-                reject(err);
-            } else {
-                resolve(results);
-            }
-        });
-    });
+    return performQuery(query);
 };
