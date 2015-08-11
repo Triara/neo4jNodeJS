@@ -12,6 +12,9 @@ module.exports = dataToSave => {
             params: {data: dataToSave}
         }, (err, results) => {
 
+
+            console.log(err)
+            console.log(results)
             if (err) {
                 reject(err);
             } else {
