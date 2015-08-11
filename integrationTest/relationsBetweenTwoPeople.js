@@ -8,6 +8,7 @@ const should = require('chai').should(),
     q = require('q');
 
 describe('Relations between two persons', () => {
+    this.timeout(5000);
     beforeEach(done => {
         deleteAllNodes().then(() => done());
     });

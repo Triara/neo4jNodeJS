@@ -6,7 +6,7 @@ const should = require('chai').should(),
     savePersonsData = require('../src/savePerson.js');
 
 describe('Save and get people info', () => {
-
+    this.timeout(5000);
     const personData = {
         name: 'Cortana',
         id: '1234-Halo5',
