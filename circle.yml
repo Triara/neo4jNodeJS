@@ -1,6 +1,6 @@
 machine:
   pre:
-    - sudo sed -i "s|dbms.security.auth_enabled=true|dbms.security.auth_enabled=false|g" /etc/neo4j/neo4j-server.properties; sleep 10
+    - sudo sed -i "s|dbms.security.auth_enabled=true|dbms.security.auth_enabled=false|g" /etc/neo4j/neo4j-server.properties; sleep 20
   node:
     version: 0.12.7
   services:
