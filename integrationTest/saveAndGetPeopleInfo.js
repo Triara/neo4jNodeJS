@@ -22,17 +22,22 @@ describe('Save and get people info', () => {
     });
 
     it('Should get back a person\'s data', done => {
-        savePersonsData(personData)
-            .then(() => {
-                getPersonsData('Cortana')
-                    .then(foundData => {
-                        should.exist(foundData[0].person.properties);
+        savePersonsData(personData).then(() => {
+            getPersonsData('Cortana').then(foundData => {
+                should.exist(foundData[0].person.properties);
 
-                        const person = foundData[0].person.properties;
-                        person.location.should.equal('City A');
-                        person.id.should.equal('1234-Halo5');
-                        done();
-                    });
+                const person = foundData[0].person.properties;
+                person.location.should.equal('City A');
+                person.id.should.equal('1234-Halo5');
+                done();
             });
+        });
+    });
+
+    it('Should not return anything if there is no data in the system', done => {
+        getPersonsData('Cortana').then(foundData => {
+            foundData.should.be.empty;
+            done();
+        });
     });
 });
