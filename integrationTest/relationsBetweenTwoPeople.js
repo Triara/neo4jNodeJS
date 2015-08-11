@@ -2,7 +2,7 @@
 
 const should = require('chai').should(),
     deleteAllNodes = require('../src/deleteAllNodes.js'),
-    person = require('../src/person.js'),
+    Person = require('../src/person.js'),
     relateTwoPersons = require('../src/relateTwoPersons'),
     getRelationsOfAPerson = require('../src/getRelationsOfAPerson.js'),
     q = require('q');
@@ -18,8 +18,8 @@ describe('Relations between two persons', () => {
         const secondPerson = {name: 'John'};
 
         q.all([
-            person.save(firstPerson),
-            person.save(secondPerson)
+            Person(firstPerson).save(),
+            Person(secondPerson).save()
         ]).then(() => {
             relateTwoPersons('Cortana', 'John').then(() => done());
         });
@@ -30,8 +30,8 @@ describe('Relations between two persons', () => {
         const secondPerson = {name: 'John'};
 
         q.all([
-            person.save(firstPerson),
-            person.save(secondPerson)
+            Person(firstPerson).save(),
+            Person(secondPerson).save()
         ]).then(() => {
             relateTwoPersons('Cortana', 'John').then(() => {
                 getRelationsOfAPerson('Cortana').then(relatedElements => {

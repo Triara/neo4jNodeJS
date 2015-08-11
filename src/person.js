@@ -18,7 +18,9 @@ function getData (personsName) {
     return performQuery(query);
 }
 
-module.exports = {
-    'save': saveData,
-    'get': getData
+module.exports = personsData => {
+    return {
+        save: () => saveData(personsData),
+        'get': () => getData(personsData.name)
+    }
 };
