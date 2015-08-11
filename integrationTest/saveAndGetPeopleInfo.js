@@ -2,8 +2,7 @@
 
 const should = require('chai').should(),
     deleteAllNodes = require('../src/deleteAllNodes.js'),
-    getPersonsData = require('../src/getPersonsData.js'),
-    savePersonsData = require('../src/savePerson.js');
+    person = require('../src/person.js');
 
 describe('Save and get people info', () => {
     this.timeout(5000);
@@ -18,12 +17,12 @@ describe('Save and get people info', () => {
     });
 
     it('Should save a person info', done => {
-        savePersonsData(personData).then(() => done());
+        person.save(personData).then(() => done());
     });
 
     it('Should get back a person\'s data', done => {
-        savePersonsData(personData).then(() => {
-            getPersonsData('Cortana').then(foundData => {
+        person.save(personData).then(() => {
+            person.get('Cortana').then(foundData => {
                 should.exist(foundData[0].person.properties);
 
                 const person = foundData[0].person.properties;
@@ -35,7 +34,7 @@ describe('Save and get people info', () => {
     });
 
     it('Should not return anything if there is no data in the system', done => {
-        getPersonsData('Cortana').then(foundData => {
+        person.get('Cortana').then(foundData => {
             foundData.should.be.empty;
             done();
         });
