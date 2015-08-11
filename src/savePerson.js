@@ -1,18 +1,10 @@
 'use strict';
 
-const db = require('./dbConnection.js');
+const performQuery = require('./performQuery.js');
 
 module.exports = dataToSave => {
-    return new Promise((resolve, reject) => {
-        db.cypher({
-            query: 'CREATE (person:Person {data})',
-            params: {data: dataToSave}
-        }, (err, results) => {
-            if (err) {
-                reject(err);
-            } else {
-                resolve(results);
-            }
-        });
-    });
+    const query = 'CREATE (person:Person {data})',
+        params = {data: dataToSave};
+
+    return performQuery(query, params);
 };
